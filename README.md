@@ -19,8 +19,10 @@ pip install appicon
 from appicon import icon_generate
 
 
-icon_generate(logo_path='~/logo.png', destination_path='~/logos/')
+icon_generate(logo_path='~/logo.png', destination_path='~/icons')
 ```
+
+![image info](./tree_after_generate.png)
 
 ## Requirements
 
