@@ -15,18 +15,26 @@ pip install appicon
 
 ## How to use it?
 
+First of all you should be generate icons with `icon_generate` function.
+
 ```python
 from appicon import icon_generate
 
 
-icon_generate(logo_path='~/logo.png', destination_path='~/icons')
+icon_generate(logo_path='~/logo.png', destination_directory='~/icons')
 ```
 
 ![image info](./tree_after_generate.png)
 
-## Requirements
+If you want to move in to `zip` file you can use `to_zip` function, and also you can remove old icon generated or not with `is_remove_source_directory` parameters.
 
-Nothing.
+```
+from appicon import to_zip
+
+
+to_zip(source_directory='~/icons', destination_path='~/icons.zip', is_remove_source_directory=True)
+
+```  
 
 ## Support
 
