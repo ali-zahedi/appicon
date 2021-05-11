@@ -28,6 +28,10 @@ class BaseIconGen(metaclass=abc.ABCMeta):
         """
         pass
 
+    @abc.abstractmethod
+    def copy_other_items(self):
+        raise NotImplementedError
+
     @property
     @abc.abstractmethod
     def directory_name(self) -> str:
@@ -40,7 +44,7 @@ class BaseIconGen(metaclass=abc.ABCMeta):
     def get_directory(self):
         return os.path.join(self.destination_path, self.directory_name)
 
-    def convert(self):
+    def create(self):
         target_directory = self.get_directory()
         # sanitize dictionary
         infos = filter(lambda x: x.get('size', None) and x.get('filename', None), self.get_infos())
@@ -48,7 +52,7 @@ class BaseIconGen(metaclass=abc.ABCMeta):
             with Image(filename=self.logo_path) as img:
                 # resize
                 for info in infos:
-                    size = list(map(lambda x: float(x), info['size'].split('x')))
+                    size = list(map(lambda x: int(float(x)), info['size'].split('x')))
                     with img.clone() as i:
                         i.resize(size[0], size[1])
                         i.save(filename=os.path.join(tmp_dirname, info['filename']))
@@ -58,3 +62,4 @@ class BaseIconGen(metaclass=abc.ABCMeta):
                 os.makedirs(target_directory)
             for file_name in file_names:
                 shutil.move(os.path.join(tmp_dirname, file_name), target_directory)
+        self.copy_other_items()
