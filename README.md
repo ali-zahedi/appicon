@@ -12,15 +12,29 @@
 ```shell script
 pip install appicon
 ```
-## Requirements
-
-## Support
 
 ## How to use it?
 
+```python
+from appicon import icon_generate
+
+
+icon_generate(logo_path='~/logo.png', destination_path='~/logos/')
+```
+
+## Requirements
+
+Nothing.
+
+## Support
+
+1. iOS
+
+1. Android
+
 # TODO
 
-- [ ] Documentation
+- [X] Documentation
 
 ## Develop
 
