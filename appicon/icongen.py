@@ -51,9 +51,12 @@ class BaseIconGen(metaclass=abc.ABCMeta):
             # resize
             img = Image.open(self.logo_path)
             for info in infos:
+                filename = os.path.join(tmp_dirname, info['filename'])
+                if not os.path.exists(os.path.dirname(filename)):
+                    os.makedirs(os.path.dirname(filename))
                 size = list(map(lambda x: int(float(x)), info['size'].split('x')))
                 i = img.resize((size[0], size[1]), Image.ANTIALIAS)
-                i.save(os.path.join(tmp_dirname, info['filename']))
+                i.save(filename)
             # move to destination directory
             file_names = os.listdir(tmp_dirname)
             if not os.path.exists(target_directory):
