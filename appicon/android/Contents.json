@@ -1,0 +1,86 @@
+[
+  {
+    "size": "16x16",
+    "filename": "drawable-ldpi/ic_small.png"
+  },
+  {
+    "size": "24x24",
+    "filename": "drawable-mdpi/ic_small.png"
+  },
+  {
+    "size": "32x32",
+    "filename": "drawable-hdpi/ic_small.png"
+  },
+  {
+    "size": "48x48",
+    "filename": "drawable-xhdpi/ic_small.png"
+  },
+  {
+    "size": "64x64",
+    "filename": "drawable-xxhdpi/ic_small.png"
+  },
+  {
+    "size": "64x64",
+    "filename": "drawable-xxxhdpi/ic_small.png"
+  },
+  {
+    "size": "64x64",
+    "filename": "drawable-web/ic_small.png"
+  },
+  {
+    "size": "24x24",
+    "filename": "drawable-ldpi/ic_notification.png"
+  },
+  {
+    "size": "24x24",
+    "filename": "drawable-mdpi/ic_notification.png"
+  },
+  {
+    "size": "36x36",
+    "filename": "drawable-hdpi/ic_notification.png"
+  },
+  {
+    "size": "48x48",
+    "filename": "drawable-xhdpi/ic_notification.png"
+  },
+  {
+    "size": "72x72",
+    "filename": "drawable-xxhdpi/ic_notification.png"
+  },
+  {
+    "size": "96x96",
+    "filename": "drawable-xxxhdpi/ic_notification.png"
+  },
+  {
+    "size": "144x144",
+    "filename": "drawable-web/ic_notification.png"
+  },
+  {
+    "size": "36x36",
+    "filename": "drawable-ldpi/ic_launcher.png"
+  },
+  {
+    "size": "48x48",
+    "filename": "drawable-mdpi/ic_launcher.png"
+  },
+  {
+    "size": "72x72",
+    "filename": "drawable-hdpi/ic_launcher.png"
+  },
+  {
+    "size": "96x96",
+    "filename": "drawable-xhdpi/ic_launcher.png"
+  },
+  {
+    "size": "144x144",
+    "filename": "drawable-xxhdpi/ic_launcher.png"
+  },
+  {
+    "size": "192x192",
+    "filename": "drawable-xxxhdpi/ic_launcher.png"
+  },
+  {
+    "size": "512x512",
+    "filename": "drawable-web/ic_launcher.png"
+  }
+]
