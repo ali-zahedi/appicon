@@ -48,7 +48,7 @@ class BaseIconGen(metaclass=abc.ABCMeta):
             with Image(filename=self.logo_path) as img:
                 # resize
                 for info in infos:
-                    size = list(map(lambda x: int(x), info['size'].split('x')))
+                    size = list(map(lambda x: float(x), info['size'].split('x')))
                     with img.clone() as i:
                         i.resize(size[0], size[1])
                         i.save(filename=os.path.join(tmp_dirname, info['filename']))
