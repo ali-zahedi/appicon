@@ -37,6 +37,5 @@ setup(
     ],
     install_requires=[
         'Wand',
-        'six',
     ],
 )

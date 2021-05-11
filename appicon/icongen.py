@@ -1,14 +1,12 @@
 import abc
 import os
 import shutil
-
-import six
-from wand.image import Image
 import tempfile
 
+from wand.image import Image
 
-@six.add_metaclass(abc.ABCMeta)
-class BaseIconGen:
+
+class BaseIconGen(metaclass=abc.ABCMeta):
 
     def __init__(self, logo_path, destination_path):
         if not os.path.exists(logo_path):
@@ -30,14 +28,14 @@ class BaseIconGen:
         """
         pass
 
-    @abc.abstractmethod
     @property
+    @abc.abstractmethod
     def directory_name(self) -> str:
         """
 
         :return: directory name like android or ios
         """
-        pass
+        raise NotImplementedError
 
     def get_directory(self):
         return os.path.join(self.destination_path, self.directory_name)

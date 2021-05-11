@@ -5,6 +5,7 @@ from appicon.icongen import BaseIconGen
 
 
 class IOSIconGen(BaseIconGen):
+    directory_name = 'ios'
 
     def get_infos(self) -> list:
         data = []
@@ -17,10 +18,6 @@ class IOSIconGen(BaseIconGen):
                 )
             )
         return data
-
-    @property
-    def directory_name(self) -> str:
-        return 'ios'
 
     @property
     def content_json_path(self):
