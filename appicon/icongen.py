@@ -1,0 +1,62 @@
+import abc
+import os
+import shutil
+
+import six
+from wand.image import Image
+import tempfile
+
+
+@six.add_metaclass(abc.ABCMeta)
+class BaseIconGen:
+
+    def __init__(self, logo_path, destination_path):
+        if not os.path.exists(logo_path):
+            raise FileNotFoundError("{0} file does not exist!".format(logo_path))
+        self.logo_path = logo_path
+        if not os.path.exists(destination_path):
+            os.makedirs(destination_path)
+        self.destination_path = destination_path
+
+    @abc.abstractmethod
+    def get_infos(self) -> list:
+        """
+        :return: [
+            {
+              "size": "20x20",
+              "filename": "Icon-Small-60.png",
+            }
+        ]
+        """
+        pass
+
+    @abc.abstractmethod
+    @property
+    def directory_name(self) -> str:
+        """
+
+        :return: directory name like android or ios
+        """
+        pass
+
+    def get_directory(self):
+        return os.path.join(self.destination_path, self.directory_name)
+
+    def convert(self):
+        target_directory = self.get_directory()
+        # sanitize dictionary
+        infos = filter(lambda x: x.get('size', None) and x.get('filename', None), self.get_infos())
+        with tempfile.TemporaryDirectory() as tmp_dirname:
+            with Image(filename=self.logo_path) as img:
+                # resize
+                for info in infos:
+                    size = list(map(lambda x: int(x), info['size'].split('x')))
+                    with img.clone() as i:
+                        i.resize(size[0], size[1])
+                        i.save(filename=os.path.join(tmp_dirname, info['filename']))
+            # move to destination directory
+            file_names = os.listdir(tmp_dirname)
+            if not os.path.exists(target_directory):
+                os.makedirs(target_directory)
+            for file_name in file_names:
+                shutil.move(os.path.join(tmp_dirname, file_name), target_directory)

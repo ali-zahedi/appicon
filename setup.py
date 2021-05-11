@@ -36,6 +36,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        'Wand'
+        'Wand',
+        'six',
     ],
 )
