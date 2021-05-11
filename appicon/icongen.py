@@ -3,8 +3,7 @@ import os
 import shutil
 import tempfile
 
-from wand.image import Image
-
+from PIL import Image
 
 class BaseIconGen(metaclass=abc.ABCMeta):
 
@@ -49,13 +48,12 @@ class BaseIconGen(metaclass=abc.ABCMeta):
         # sanitize dictionary
         infos = filter(lambda x: x.get('size', None) and x.get('filename', None), self.get_infos())
         with tempfile.TemporaryDirectory() as tmp_dirname:
-            with Image(filename=self.logo_path) as img:
-                # resize
-                for info in infos:
-                    size = list(map(lambda x: int(float(x)), info['size'].split('x')))
-                    with img.clone() as i:
-                        i.resize(size[0], size[1])
-                        i.save(filename=os.path.join(tmp_dirname, info['filename']))
+            # resize
+            img = Image.open(self.logo_path)
+            for info in infos:
+                size = list(map(lambda x: int(float(x)), info['size'].split('x')))
+                i = img.resize((size[0], size[1]), Image.ANTIALIAS)
+                i.save(os.path.join(tmp_dirname, info['filename']))
             # move to destination directory
             file_names = os.listdir(tmp_dirname)
             if not os.path.exists(target_directory):
