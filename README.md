@@ -7,6 +7,11 @@
 
 [[_TOC_]]
 
+
+## Intro
+
+When you want to publish your app, you should provide a high-resolution app icon. App icon is the main representation of your app in users mobile devices. The process of generating app icon is different for each mobile platform. You should spend time and efforts on generating app icon in different resolutions for android and iOS. It's not a concern anymore, AZ app icon generates app icons for many different devices and resolutions on android/iOS for free. Then you can easily add the icon files to your project.
+
 ## Install with `pip`
 
 ```shell script
@@ -28,7 +33,7 @@ icon_generate(logo_path='~/logo.png', destination_directory='~/icons')
 
 If you want to move in to `zip` file you can use `to_zip` function, and also you can remove old icon generated or not with `is_remove_source_directory` parameters.
 
-```
+```python
 from appicon import to_zip
 
 
