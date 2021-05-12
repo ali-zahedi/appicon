@@ -2,14 +2,21 @@ from .ios import IOSIconGen
 from .android import AndroidIconGen
 
 
-def icon_generate(logo_path, destination_directory):
-    ios = IOSIconGen(logo_path, destination_directory)
-    android = AndroidIconGen(logo_path, destination_directory)
+def icon_generate(logo_path, destination_directory, is_zip=True):
+    import os
+    dd = destination_directory
+    icon_set_name = 'icon_set'
+    if is_zip:
+        dd = os.path.join(dd, icon_set_name)
+    ios = IOSIconGen(logo_path, dd)
+    android = AndroidIconGen(logo_path, dd)
     for i in [ios, android]:
         i.create()
+    if is_zip:
+        _to_zip(dd, os.path.join(destination_directory, f'{icon_set_name}.zip'), is_remove_source_directory=True)
 
 
-def to_zip(source_directory, destination_path, is_remove_source_directory=False):
+def _to_zip(source_directory, destination_path, is_remove_source_directory=False):
     import os
     import shutil
     import zipfile
