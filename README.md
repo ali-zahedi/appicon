@@ -26,7 +26,7 @@ First of all you should be generate icons with `icon_generate` function.
 from appicon import icon_generate
 
 
-icon_generate(logo_path='~/logo.png', destination_directory='~/icons', is_zip=False)
+directory_path = icon_generate(logo_path='~/logo.png', destination_directory='~/icons', is_zip=False)
 ```
 
 ![image info](./tree_after_generate.png)
@@ -37,7 +37,7 @@ If you want to move in to `zip` file you can pass argument `is_zip=True`.
 from appicon import icon_generate
 
 
-icon_generate(logo_path='~/logo.png', destination_directory='~/icons', is_zip=True)
+zip_path = icon_generate(logo_path='~/logo.png', destination_directory='~/icons', is_zip=True)
 
 ```  
 

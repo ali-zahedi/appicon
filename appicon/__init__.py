@@ -13,7 +13,10 @@ def icon_generate(logo_path, destination_directory, is_zip=True):
     for i in [ios, android]:
         i.create()
     if is_zip:
-        _to_zip(dd, os.path.join(destination_directory, f'{icon_set_name}.zip'), is_remove_source_directory=True)
+        dest = os.path.join(destination_directory, f'{icon_set_name}.zip')
+        _to_zip(dd, dest, is_remove_source_directory=True)
+        return dest
+    return destination_directory
 
 
 def _to_zip(source_directory, destination_path, is_remove_source_directory=False):
