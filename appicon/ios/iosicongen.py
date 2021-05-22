@@ -14,7 +14,7 @@ class IOSIconGen(BaseIconGen):
             dt = json.load(json_file)
             data = list(
                 map(
-                    lambda x: {'size': x.get('size', None), 'filename': x.get('filename', None)},
+                    self._calc_size,
                     dt.get('images', [])
                 )
             )
@@ -27,3 +27,10 @@ class IOSIconGen(BaseIconGen):
 
     def copy_other_items(self):
         shutil.copy(self.content_json_path, self.get_directory())
+
+    @staticmethod
+    def _calc_size(x):
+        sizes = list(map(lambda y: float(y), x.get('size', '').split('x')))
+        scale = int(x.get('scale', '1x').strip('x'))
+        size = '{}x{}'.format(int(sizes[0] * scale), int(sizes[1] * scale))
+        return {'size': size, 'filename': x.get('filename', None)}
