@@ -51,7 +51,12 @@ zip_path = icon_generate(logo_path='~/logo.png', destination_directory='~/icons'
 
 - [X] Documentation
 
-## Develop
+## Contributors
+
+Thanks to:
+
+1. [@oxcug](https://github.com/oxcug) for the update xcode 13 support.
+
 
 ## License
 
